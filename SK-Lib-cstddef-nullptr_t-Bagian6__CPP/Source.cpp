@@ -1,0 +1,31 @@
+#include <cstddef>
+#include <iostream>
+#include <conio.h>
+
+/*
+    Source by CPPReference
+    Modified For Learn by RK
+    I.D.E : VS2019
+*/
+
+template<class T>
+constexpr T clone(const T& t) {
+    return t;
+}
+
+void g(int*) {
+    std::cout << "Function g called\n";
+}
+
+int main() {
+    g(nullptr);        // Fine
+    g(NULL);           // Fine
+    g(0);              // Fine
+
+    g(clone(nullptr)); // Fine
+//  g(clone(NULL));    // ERROR: non-literal zero cannot be a null pointer constant
+//  g(clone(0));       // ERROR: non-literal zero cannot be a null pointer constant
+
+    _getch();
+    return 0;
+}
